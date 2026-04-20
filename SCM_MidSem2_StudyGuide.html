@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SCM Mid-Sem 2 – Complete Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0f14;--surface:#161a23;--surface2:#1e2330;--border:#2a3045;--accent:#f0c040;--accent2:#4a9eff;--accent3:#ff6b6b;--accent4:#50e3a4;--text:#e8eaf0;--muted:#8892a4;--heading:#ffffff}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.7}
+.hero{background:linear-gradient(135deg,#0d0f14 0%,#1a1030 40%,#0a1828 100%);border-bottom:1px solid var(--border);padding:60px 40px 50px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(240,192,64,.07) 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(74,158,255,.07) 0%,transparent 60%)}
+.hero-badge{display:inline-block;background:rgba(240,192,64,.12);border:1px solid rgba(240,192,64,.3);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:20px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);font-weight:900;color:var(--heading);line-height:1.15;margin-bottom:12px}
+.hero h1 span{color:var(--accent)}
+.hero p{color:var(--muted);font-size:14px;letter-spacing:.5px}
+.nav-wrap{position:sticky;top:0;z-index:100;background:rgba(13,15,20,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 20px;display:flex;gap:0;overflow-x:auto}
+.nav-wrap::-webkit-scrollbar{height:3px}.nav-wrap::-webkit-scrollbar-thumb{background:var(--border)}
+.tab-btn{flex-shrink:0;background:none;border:none;color:var(--muted);font-family:'IBM Plex Sans',sans-serif;font-size:13px;font-weight:500;padding:14px 18px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;text-transform:uppercase;letter-spacing:.8px}
+.tab-btn:hover{color:var(--text)}.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent)}
+.container{max-width:980px;margin:0 auto;padding:40px 20px 80px}
+.section{display:none;animation:fadeIn .3s ease}.section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.section-header{display:flex;align-items:center;gap:14px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.section-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.section-header h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--heading)}
+.section-header p{color:var(--muted);font-size:13px}
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:20px;overflow:hidden;transition:border-color .2s}
+.q-card:hover{border-color:rgba(240,192,64,.3)}
+.q-header{padding:16px 20px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;user-select:none}
+.q-num{background:rgba(240,192,64,.1);color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;padding:3px 8px;border-radius:6px;flex-shrink:0;margin-top:2px;border:1px solid rgba(240,192,64,.2)}
+.q-title{font-weight:600;font-size:15px;color:var(--heading);flex:1;line-height:1.4}
+.q-marks{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent4);background:rgba(80,227,164,.08);border:1px solid rgba(80,227,164,.2);padding:3px 8px;border-radius:6px;flex-shrink:0;margin-top:2px}
+.q-toggle{color:var(--muted);font-size:14px;flex-shrink:0;margin-top:3px;transition:transform .25s}
+.q-card.open .q-toggle{transform:rotate(180deg)}
+.q-body{display:none;padding:0 20px 20px;border-top:1px solid var(--border)}
+.q-card.open .q-body{display:block}
+.ans-block{padding-top:16px}
+.ans-intro{background:linear-gradient(135deg,rgba(240,192,64,.06),rgba(240,192,64,.02));border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin-bottom:16px;font-size:14px;color:var(--text);line-height:1.65}
+h4{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent2);margin:16px 0 8px}
+ul,ol{padding-left:20px}
+li{margin-bottom:6px;font-size:14px;color:var(--text);line-height:1.6}
+li strong{color:var(--heading)}
+p.body{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:10px}
+.tbl-wrap{overflow-x:auto;margin:12px 0;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead{background:var(--surface2)}
+th{padding:9px 13px;text-align:left;color:var(--accent);font-weight:600;font-size:12px;letter-spacing:.5px;border-bottom:1px solid var(--border)}
+td{padding:8px 13px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.num-box{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:14px 0}
+.num-box-title{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.num-box-title::before{content:'◆'}
+.formula{background:#0a0d12;border:1px solid var(--border);border-radius:6px;padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent4);margin:8px 0;line-height:1.6;white-space:pre-wrap;overflow-x:auto}
+.diagram{background:#0a0d12;border:1px solid var(--border);border-radius:8px;padding:14px;margin:12px 0;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent4);white-space:pre;overflow-x:auto;line-height:1.5}
+.exam-tip{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.2);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:13px;color:#ffb3b3}
+.exam-tip::before{content:'📌 Exam Tip: ';font-weight:600;color:var(--accent3)}
+.src-note{font-size:11px;color:var(--muted);font-style:italic;margin-top:12px;padding-top:8px;border-top:1px solid var(--border)}
+.divider{height:1px;background:var(--border);margin:20px 0}
+.highlight{background:rgba(240,192,64,.08);border:1px solid rgba(240,192,64,.15);border-radius:6px;padding:8px 12px;margin:8px 0;font-size:14px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">Mid-Semester II &nbsp;·&nbsp; Supply Chain Management</div>
+  <h1>SCM <span>Complete</span> Study Guide</h1>
+  <p>Sourcing &nbsp;·&nbsp; Network Design &nbsp;·&nbsp; Transportation &nbsp;|&nbsp; Chopra &amp; Meindl + Class Notes</p>
+</div>
+
+<div class="nav-wrap">
+  <button class="tab-btn active" onclick="showTab('sourcing',this)">📦 Sourcing</button>
+  <button class="tab-btn" onclick="showTab('network',this)">🏭 Network Design</button>
+  <button class="tab-btn" onclick="showTab('transport',this)">🚚 Transportation</button>
+  <button class="tab-btn" onclick="showTab('quick',this)">⚡ Quick Revision</button>
+</div>
+
+<div class="container">
+
+<!-- ===== SOURCING ===== -->
+<div id="sourcing" class="section active">
+<div class="section-header">
+  <div class="section-icon" style="background:rgba(240,192,64,.1)">📦</div>
+  <div><h2>Sourcing Decisions in Supply Chains</h2><p>Role · Supplier Assessment · Design Collaboration · Sourcing Planning · Market Sourcing</p></div>
+</div>
+
+<div class="q-card open">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q1</span><span class="q-title">What is the Role of Sourcing in a Supply Chain? Why is it important?</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Sourcing refers to the set of business processes required to purchase goods and services. It is a critical SC driver as it directly impacts cost, quality, responsiveness, and risk across the entire supply chain.</div>
+<h4>Key Roles of Sourcing</h4>
+<ul>
+<li><strong>Economies of Scale for Suppliers:</strong> A firm may not achieve economical production volumes, but suppliers working across multiple clients can achieve scale in transportation, warehousing, information, and purchasing. (Your notes, Image 1)</li>
+<li><strong>Cost Reduction:</strong> Purchasing activities can represent 50–80% of cost of goods sold in many industries — effective sourcing directly reduces this.</li>
+<li><strong>Revenue Impact:</strong> Good sourcing ensures product availability and quality → directly affects customer satisfaction and revenue.</li>
+<li><strong>Risk Management:</strong> Multi-source vs. single-source decisions determine supply disruption risk.</li>
+<li><strong>SC Performance:</strong> Sourcing decisions affect all SC drivers — inventory, transportation, facilities, and information.</li>
+</ul>
+<h4>When Does Outsourcing NOT Work? (Your Notes)</h4>
+<ul>
+<li><strong>High Volume:</strong> When production volume is large, it is unlikely a 3rd party can get better economies of scale than the firm itself.</li>
+<li><strong>Highly Variable Requirements:</strong> If requirements are highly variable over time, a 3rd party can meet supply through aggregation.</li>
+<li><strong>Specific Resources:</strong> If the service requires specific resources, the firm can hire those resources instead of using a vendor.</li>
+</ul>
+<h4>In-House vs. Outsourcing Decision</h4>
+<div class="tbl-wrap"><table><thead><tr><th>In-House</th><th>Outsource</th></tr></thead><tbody>
+<tr><td>Better control, IP protection</td><td>Access to supplier expertise &amp; scale</td></tr>
+<tr><td>Higher fixed costs</td><td>Variable costs, more flexibility</td></tr>
+<tr><td>Suited for core competencies</td><td>Suited for non-core activities</td></tr>
+<tr><td>Example: Apple chip design</td><td>Example: Apple manufacturing (Foxconn)</td></tr>
+</tbody></table></div>
+<div class="exam-tip">Always mention economies of scale and cost reduction as primary drivers. Include "when not to outsource" — it shows depth.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q2</span><span class="q-title">Explain Supplier Assessment and Selection. What factors are considered?</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Supplier assessment is the process of evaluating potential or existing suppliers to ensure they meet the firm's requirements for cost, quality, delivery, and flexibility — it is the foundation of effective sourcing strategy.</div>
+<h4>Key Criteria for Supplier Assessment (Chopra Ch.13)</h4>
+<ul>
+<li><strong>Replenishment Lead Time:</strong> How quickly can the supplier deliver after an order is placed?</li>
+<li><strong>On-Time Delivery Performance:</strong> What % of deliveries arrive on time?</li>
+<li><strong>Supply Flexibility:</strong> Can the supplier handle demand variability?</li>
+<li><strong>Supply Quality:</strong> Defect rates, quality certifications (ISO).</li>
+<li><strong>Inbound Transportation Cost:</strong> Landed cost of goods at buyer's facility.</li>
+<li><strong>Pricing Terms:</strong> Volume discounts, payment terms, price stability.</li>
+<li><strong>Information Coordination Capability:</strong> Can supplier share real-time data (EDI, VMI)?</li>
+<li><strong>Design Collaboration Capability:</strong> Ability to co-develop products.</li>
+<li><strong>Exchange Rates, Taxes, Duties:</strong> Especially for global sourcing.</li>
+<li><strong>Supplier Viability:</strong> Financial health — will the supplier stay long-term?</li>
+</ul>
+<h4>Single Source vs. Multiple Sources</h4>
+<div class="tbl-wrap"><table><thead><tr><th>Dimension</th><th>Single Source</th><th>Multiple Sources</th></tr></thead><tbody>
+<tr><td>Cost per unit</td><td>Lower (volume discounts)</td><td>Higher per unit</td></tr>
+<tr><td>Disruption Risk</td><td>Higher</td><td>Lower</td></tr>
+<tr><td>Coordination</td><td>Easier</td><td>Complex</td></tr>
+<tr><td>Price leverage</td><td>Less</td><td>More</td></tr>
+<tr><td>Best for</td><td>Unique/specialized products</td><td>Commodity products</td></tr>
+</tbody></table></div>
+<div class="exam-tip">Structure: define → list 5 criteria → single vs. multiple → conclude with TCO concept.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q3</span><span class="q-title">What is Design Collaboration in Sourcing? Explain its benefits and challenges.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Design collaboration is when buyers and suppliers work together during the product design phase to improve design, reduce manufacturing costs, and shorten time-to-market by leveraging supplier manufacturing expertise early.</div>
+<h4>Benefits</h4>
+<ul>
+<li>Suppliers suggest DFM (Design for Manufacturability) improvements — reduces production cost.</li>
+<li>Reduces <strong>time to market</strong> significantly.</li>
+<li>Better component standardization → lower part count, better volume pricing.</li>
+<li>Reduces engineering change orders (ECOs) after production begins.</li>
+<li>Better alignment between design specs and actual production capability.</li>
+</ul>
+<h4>Challenges</h4>
+<ul>
+<li><strong>IP Risk:</strong> Sharing proprietary designs can lead to intellectual property leakage.</li>
+<li><strong>Coordination Costs:</strong> Requires tight communication, trust, and dedicated resources.</li>
+<li><strong>Lock-in Risk:</strong> Over-dependence on a single supplier's design capability.</li>
+<li><strong>Trust Issues:</strong> Difficult to collaborate effectively with a new or unproven supplier.</li>
+</ul>
+<h4>When is Design Collaboration Critical?</h4>
+<ul>
+<li>Complex, technology-intensive products (electronics, automotive components).</li>
+<li>When supplier has specialized technical capability the buyer lacks.</li>
+<li>Short product lifecycles demanding rapid innovation.</li>
+</ul>
+<div class="exam-tip">Link design collaboration to "what makes a good supplier" — IP risk is a major concern worth emphasizing.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q4</span><span class="q-title">Explain Sourcing Contracts — Revenue Sharing, Buyback, and Quantity Flexibility.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Sourcing contracts are agreements between buyers and suppliers that allocate risk and incentivize coordination. Different contract types create different behaviors in the supply chain. From your notes (Image 2), these are key contracts covered in class.</div>
+<h4>1. Revenue Sharing Contract</h4>
+<ul>
+<li>Supplier charges a <strong>lower wholesale price</strong> but receives a share of the retailer's revenue.</li>
+<li>Retailer orders more because per-unit cost is lower → reduces stockouts.</li>
+<li>Aligns incentives: both benefit when sales are high.</li>
+<li><strong>Example:</strong> Video rental industry — Blockbuster &amp; studios shared revenue.</li>
+</ul>
+<h4>2. Buyback (Returns) Contract</h4>
+<ul>
+<li>Supplier agrees to buy back <strong>unsold inventory</strong> from retailer at a negotiated price.</li>
+<li>Retailer takes more risk off the table → orders larger quantities → reduces stockouts.</li>
+<li>Supplier bears the downside risk of over-ordering.</li>
+<li><strong>Downside:</strong> No returns allowed means each unit sold is more valuable → OIP.</li>
+</ul>
+<h4>3. Quantity Flexibility Contract</h4>
+<ul>
+<li>Retailer is allowed to <strong>change order quantity</strong> up to a specified percentage after seeing actual demand.</li>
+<li>Reduces retailer risk of committing too early.</li>
+<li>The retailer is allowed to offer (within limits) to alter quantities; this flexibility is allowed in actuality (within specified limits) and is charged on a variance.</li>
+</ul>
+<h4>4. Off-Invoice Promotions (from notes)</h4>
+<ul>
+<li>A specified amount of revenue is applied at price — no returns allowed.</li>
+<li>Each unit sold at a retailer allows the retailer to track revenue — but units are allowed at a specified level of revenue/promotion.</li>
+</ul>
+<div class="tbl-wrap"><table><thead><tr><th>Contract Type</th><th>Who Bears Risk</th><th>Effect on Order Qty</th></tr></thead><tbody>
+<tr><td>Standard Wholesale</td><td>Retailer</td><td>Under-orders (newsvendor)</td></tr>
+<tr><td>Revenue Sharing</td><td>Shared</td><td>Increases (lower w/s price)</td></tr>
+<tr><td>Buyback</td><td>Supplier</td><td>Increases (return safety net)</td></tr>
+<tr><td>Qty Flexibility</td><td>Shared</td><td>Increases (adjust after info)</td></tr>
+</tbody></table></div>
+<div class="exam-tip">Always mention which party bears risk and how the contract changes ordering behavior. Use a tabular format for full marks.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q5</span><span class="q-title">Distinguish between Offshoring and Outsourcing with examples.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Offshoring and outsourcing address different dimensions of the "make vs. buy" and "where" decisions in global sourcing strategy. They are often confused but are conceptually distinct.</div>
+<div class="tbl-wrap"><table><thead><tr><th>Dimension</th><th>Outsourcing</th><th>Offshoring</th></tr></thead><tbody>
+<tr><td>Definition</td><td>Hiring an external party to perform a function</td><td>Moving a function to another country</td></tr>
+<tr><td>Focus</td><td>WHO performs the function</td><td>WHERE the function is performed</td></tr>
+<tr><td>Control</td><td>Reduced (external party)</td><td>Can retain (own subsidiary abroad)</td></tr>
+<tr><td>Motivation</td><td>Cost, expertise, flexibility</td><td>Lower wages, tax, market access</td></tr>
+<tr><td>Example</td><td>Walmart → 3PL logistics</td><td>Apple manufacturing in China (Foxconn)</td></tr>
+<tr><td>Risk</td><td>Quality, IP, coordination</td><td>Geopolitical, currency, longer lead times</td></tr>
+</tbody></table></div>
+<h4>Four Combinations (2×2 Matrix)</h4>
+<div class="tbl-wrap"><table><thead><tr><th></th><th>In-House</th><th>Outsourced</th></tr></thead><tbody>
+<tr><td><strong>Domestic</strong></td><td>Traditional vertical integration (e.g., Ford River Rouge)</td><td>Domestic outsourcing (e.g., US firm hires domestic 3PL)</td></tr>
+<tr><td><strong>Foreign (Offshore)</strong></td><td>Captive offshoring (e.g., GE's India R&amp;D center)</td><td>Offshore outsourcing (e.g., US firm hires Indian IT company)</td></tr>
+</tbody></table></div>
+<div class="exam-tip">The 2×2 matrix always impresses examiners. Mention "offshore outsourcing" as the most common combination in global SCM today.</div>
+</div></div></div>
+</div><!-- end sourcing -->
+
+<!-- ===== NETWORK DESIGN ===== -->
+<div id="network" class="section">
+<div class="section-header">
+  <div class="section-icon" style="background:rgba(74,158,255,.1)">🏭</div>
+  <div><h2>Network Design Decisions</h2><p>Factors · Distribution Networks · Framework · Facility Location · Uncertainty</p></div>
+</div>
+
+<div class="q-card open">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q1</span><span class="q-title">What are the factors influencing Network Design Decisions (NDD)? Explain each factor.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Network design decisions determine where facilities are located, their capacity, and which markets they serve. The final decision is taken at a combined consideration of ALL factors. (From your notes, Image 3)</div>
+<h4>7 Factors (Mnemonic: S-T-M-P-I-C-L)</h4>
+<ol>
+<li><strong>Strategic Factor:</strong> India preferred for many manufacturing plant locations — very stable in market POV. Turkey can connect transportation to Europe as well as Asia. Country-level strategic value matters.</li>
+<li><strong>Technological Factor:</strong> High-tech preferred. Affected by scale (high or low). High economies of scale → fewer, centralized facilities. Low economies of scale → many, distributed facilities.</li>
+<li><strong>Macroeconomic Factor:</strong> Must have stable economic market, economic conditions, economic parity. E.g., India's Nov 2016 demonetization (₹500 &amp; ₹1000) made the market volatile → companies reconsidered investment.</li>
+<li><strong>Political Situation:</strong> Stable &amp; good governance required. Moving from favorable political conditions to volatile situations (due to some reasons in home countries) makes markets volatile.</li>
+<li><strong>Infrastructure Factor:</strong> Appropriate infra needed. E.g., good network of rail/road/air connectivity, good power availability, good water availability.</li>
+<li><strong>Competitive Factor:</strong> Where competitors are located influences network decisions. Firms may cluster near competitors for skilled labor pools or locate away to capture new markets.</li>
+<li><strong>Logistics &amp; Facility Cost:</strong> Excessive logistics &amp; facility cost must not be there. Must balance transportation cost savings with facility fixed costs.</li>
+</ol>
+<div class="exam-tip">Each factor must have one real-world example. Memorize S-T-M-P-I-C-L. India, Turkey, and demonetization examples come directly from class — use them.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q2</span><span class="q-title">Explain the Cost-Response Time Frontier and Service vs. Number of Facilities tradeoff.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Two fundamental tradeoffs govern network design: (1) Cost vs. Response Time and (2) Service Level vs. Number of Facilities. These are captured graphically in the Cost-Response Time Frontier and the Service-Facilities curve. (Your notes Image 3)</div>
+<h4>Cost-Response Time Frontier</h4>
+<p class="body">As response time decreases (faster delivery), cost increases. The frontier shows that for any given response time, there is a minimum cost option. Inventory positioning drives this frontier:</p>
+<div class="diagram">  HIGH
+  COST  ● Local Finished Goods     ← fastest, most expensive
+   ↑    ● Mix (Local + Regional)
+   |    ● Regional Finished Goods
+   |    ● Local Work-in-Process
+   |    ● Central Finished Goods
+   |    ● Central Work-in-Process
+   |    ● Central Raw Material
+   LOW  ● Custom Product at Supplier ← slowest, cheapest
+        ───────────────────────────────→
+        LOW      Response Time       HIGH</div>
+<p class="body"><strong>Key insight:</strong> If the customer can wait → no need to locate facility near customer. If response time must be low → must hold local finished goods (expensive).</p>
+<h4>Service Level vs. Number of Facilities</h4>
+<div class="diagram">  Response
+  Time
+   ↑
+   |    \
+   |     \
+   |      \_____ (diminishing returns)
+   |____________→
+         # Facilities</div>
+<p class="body">As the number of facilities increases, response time decreases (better service), but at a diminishing rate. Beyond an optimal number, the gain in service is marginal but costs keep rising.</p>
+<h4>Cost vs. Number of Facilities</h4>
+<ul>
+<li><strong>Inventory cost:</strong> Increases with more facilities (safety stock increases).</li>
+<li><strong>Facility cost:</strong> Increases with more facilities (fixed costs).</li>
+<li><strong>Transportation cost:</strong> Decreases initially with more facilities (closer to customers), but inbound transportation may increase.</li>
+<li><strong>Total cost:</strong> U-shaped curve — there is an optimal number of facilities.</li>
+</ul>
+<div class="exam-tip">Draw both diagrams in your answer. They are directly from class notes (Image 3 &amp; Image 4) — even a rough sketch earns marks.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q3</span><span class="q-title">Explain the Framework for Global Site Location Decisions (4 Phases).</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">The framework for global site location provides a structured, phased approach to deciding where to locate facilities globally. It considers competitive strategy, macroeconomic factors, infrastructure, and logistics costs. (Your notes Image 4)</div>
+<h4>4-Phase Framework</h4>
+<ol>
+<li><strong>Phase 1 — SC Strategy:</strong>
+<ul>
+<li>Competitive Strategy + Internal Constraints → define SC Strategy.</li>
+<li>Also influenced by: Global Competition and Tariff &amp; Tax Incentives.</li>
+<li>Determine the overall role of each facility (manufacturing hub, regional DC, etc.).</li>
+</ul>
+</li>
+<li><strong>Phase 2 — Regional Facility Configuration:</strong>
+<ul>
+<li>Inputs: Production Technology, Competitive Environment.</li>
+<li>Influenced by: Regional Demand, Political/Exchange Rate/Demand Risk.</li>
+<li>Decide which regions of the world to locate facilities in.</li>
+</ul>
+</li>
+<li><strong>Phase 3 — Desirable Sites:</strong>
+<ul>
+<li>Input: Production Methods → identify desirable sites within selected regions.</li>
+<li>Influenced by: Available Infrastructure.</li>
+<li>Short-list specific sites based on infra, labor, and regulations.</li>
+</ul>
+</li>
+<li><strong>Phase 4 — Location Choices:</strong>
+<ul>
+<li>Inputs: Factor Costs → make final location choices.</li>
+<li>Influenced by: Logistics Cost.</li>
+<li>Select the final specific location based on combined total cost analysis.</li>
+</ul>
+</li>
+</ol>
+<div class="exam-tip">Draw the framework as a flowchart (as in your notes Image 4). Phase → What inputs? → What factors influence? → What output?</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q4</span><span class="q-title">Explain the Gravity (Centroid) Model for Facility Location with a numerical example.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">The Gravity (Centroid) Model is used to find the optimal location for a single warehouse/facility that minimizes total transportation cost, based on coordinates of delivery locations and the volume of goods shipped. (From your notes Image 5)</div>
+<h4>Model Setup</h4>
+<p class="body">Given n delivery locations, each with coordinates (x, y) and annual tonnage D:</p>
+<div class="formula">Objective: Minimize ∑ dₙ · Dₙ · Tₙ
+
+Where:
+  dₙ = distance from warehouse to delivery location n
+  Dₙ = annual tonnage to location n  
+  Tₙ = transportation cost per ton-mile to location n</div>
+<h4>Centroid Formula</h4>
+<div class="formula">x* = ∑(xₙ × Dₙ) / ∑Dₙ
+y* = ∑(yₙ × Dₙ) / ∑Dₙ
+
+(x*, y*) = Optimal warehouse location (centroid)</div>
+<h4>Numerical Example</h4>
+<div class="num-box">
+<div class="num-box-title">Worked Example</div>
+<p class="body">Three retail locations with coordinates and annual demand:</p>
+<div class="tbl-wrap"><table><thead><tr><th>Location</th><th>x-coord</th><th>y-coord</th><th>Demand (tons)</th><th>x × D</th><th>y × D</th></tr></thead><tbody>
+<tr><td>A</td><td>2</td><td>3</td><td>100</td><td>200</td><td>300</td></tr>
+<tr><td>B</td><td>5</td><td>7</td><td>200</td><td>1000</td><td>1400</td></tr>
+<tr><td>C</td><td>8</td><td>2</td><td>150</td><td>1200</td><td>300</td></tr>
+<tr><td><strong>Total</strong></td><td>—</td><td>—</td><td><strong>450</strong></td><td><strong>2400</strong></td><td><strong>2000</strong></td></tr>
+</tbody></table></div>
+<div class="formula">x* = 2400 / 450 = 5.33
+y* = 2000 / 450 = 4.44
+
+Optimal Warehouse Location ≈ (5.33, 4.44)</div>
+</div>
+<h4>Procedure (from notes — Gravity Method)</h4>
+<ol>
+<li>Initially assume x, y = 0 for warehouse.</li>
+<li>For every facility, calculate the logistics cost.</li>
+<li>Whichever facility gives the minimum cost → that becomes the finalized location.</li>
+<li>Three main aspects: ① Role ② Size ③ Location.</li>
+</ol>
+<div class="exam-tip">Even if the numerical formula differs slightly from what was taught, the concept — weighted average of coordinates — is what matters. Show the table clearly.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q5</span><span class="q-title">What is Network Optimization Model? How is it used in Facility Location?</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">A Network Optimization Model is a mathematical model used to determine the optimal configuration of supply chain networks — including where to locate facilities, what capacity to allocate, and how to allocate demand. (Your notes Image 5)</div>
+<h4>What it is Used For</h4>
+<ul>
+<li><strong>Allocate demand to production facilities</strong> — which plant should serve which market?</li>
+<li><strong>Locating facilities &amp; allocating their capacity</strong> — where should warehouses/DCs be placed?</li>
+</ul>
+<h4>Costs Considered</h4>
+<ul>
+<li>Coordination cost</li>
+<li>Transportation cost</li>
+<li>Facility fixed and variable cost</li>
+<li>Inventory cost</li>
+</ul>
+<h4>In Excel / Solver (from notes)</h4>
+<ul>
+<li>Some data will be given; have to find minimum transportation cost by using Excel Solver to get the location of the warehouse.</li>
+<li>Decision variable: x and y coordinates of each candidate facility.</li>
+</ul>
+<h4>Network Design in an Uncertain Environment</h4>
+<ul>
+<li>Environment is not certain — there are lots of uncertainties in the external environment.</li>
+<li>These uncertainties affect SC decisions. If we don't take uncertainty into account, it is very difficult to develop a responsive supply chain.</li>
+<li>Challenges: existing environment → Demonetization, Pandemic → e.g. COVID.</li>
+</ul>
+<h4>Impact of Uncertainty on SC Network Design</h4>
+<ol>
+<li>SC design decisions include investments in number &amp; size of plants, # of trucks, # of warehouses.</li>
+<li>These decisions can't be changed in the short term.</li>
+<li>There will be a good deal of uncertainty in demand, prices, exchange rates, and the competitive market over the life cycle of a SC network.</li>
+<li>Building flexibility in SC operations allows the SC to deal with uncertainty in a manner that maximizes profit.</li>
+</ol>
+<div class="exam-tip">Distinguish between deterministic models (gravity/optimization) and stochastic/flexible models for uncertain environments. Your notes cover both — use them!</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q6</span><span class="q-title">Explain Distribution Network Designs: Direct Shipping, Milk Runs, DC with Storage, Cross-Docking, and Tailored Networks.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">There are 6 main methods of deciding the TP (transportation) structure/network for delivering goods from manufacturer to customer. (Your notes Image 9)</div>
+<h4>6 Distribution Network Options</h4>
+<ol>
+<li><strong>Direct Shipping (Network to Single Destination):</strong>
+<ul>
+<li>Manufacturer ships directly to each customer with no intermediary.</li>
+<li>Best for: high-value, low-volume products. E.g., Zara direct delivery.</li>
+<li>Low coordination cost but high per-unit transportation cost.</li>
+</ul>
+</li>
+<li><strong>Direct Shipping with Milk Runs:</strong>
+<ul>
+<li>Same truck visits multiple locations on a single trip.</li>
+<li>Milk run = same truck, different products, different destinations.</li>
+<li>Reduces per-unit transportation cost.</li>
+</ul>
+</li>
+<li><strong>All Shipments via Central DC with In-Store Storage:</strong>
+<ul>
+<li>All goods flow through a central DC before reaching stores.</li>
+<li>DC holds inventory. High storage cost but good consolidation.</li>
+</ul>
+</li>
+<li><strong>All Shipments via DC (Cross-Docking — No Storage):</strong>
+<ul>
+<li>Cross-dock = only repackaging of product, NO inventory stored.</li>
+<li>Goods arrive at DC, are sorted and immediately dispatched.</li>
+<li>Low inventory cost. Requires excellent coordination. E.g., Walmart cross-docking.</li>
+</ul>
+</li>
+<li><strong>Shipping via DC Using Milk Runs:</strong>
+<ul>
+<li>After goods arrive at DC, milk run trucks deliver to multiple nearby stores.</li>
+<li>Best for high-density areas with many nearby customers.</li>
+</ul>
+</li>
+<li><strong>Tailored Network:</strong>
+<ul>
+<li>Uses a combination of above approaches based on customer segment, product type, and geography.</li>
+<li>Most complex but most efficient — assigns optimal method for each product-customer combination.</li>
+</ul>
+</li>
+</ol>
+<h4>Milk Run vs. Cross-Dock (from notes)</h4>
+<div class="tbl-wrap"><table><thead><tr><th></th><th>Milk Runs</th><th>Cross-Docking</th></tr></thead><tbody>
+<tr><td>Definition</td><td>Same truck, diff products, diff destinations</td><td>Only repackaging, no storage</td></tr>
+<tr><td>Inventory</td><td>In transit</td><td>None at DC</td></tr>
+<tr><td>Use case</td><td>Multiple nearby stops</td><td>High-volume consolidated flows</td></tr>
+</tbody></table></div>
+<div class="exam-tip">Image 9 from your notes lists exactly these 6 types — learn them in order. Cross-docking and milk runs are frequently asked.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q7</span><span class="q-title">Explain the relationship between number of facilities and Cost, Inventory, Transportation (with diagram).</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">As the number of facilities in a network changes, different cost components respond differently. Understanding these tradeoffs is essential for optimal network design. (Your notes Image 4)</div>
+<h4>Cost Components vs. Number of Facilities</h4>
+<div class="diagram">  Cost
+   ↑
+   |      /  ← Inventory cost (↑ with more facilities)
+   |     /
+   |    /         Total Cost (U-shaped)
+   |   /    \____/
+   |  |  Facility    Transportation (↓ initially)
+   |__|________________→
+              # Facilities</div>
+<ul>
+<li><strong>Inventory Cost:</strong> Increases with more facilities — more safety stock needed at each location (square root law).</li>
+<li><strong>Facility Cost:</strong> Increases with more facilities — each has fixed overhead costs.</li>
+<li><strong>Transportation Cost:</strong> Decreases initially as facilities move closer to customers (lower outbound cost), but inbound transportation from suppliers may increase.</li>
+<li><strong>Total Cost:</strong> U-shaped curve — has a minimum at an optimal number of facilities.</li>
+</ul>
+<h4>Service Level vs. # Facilities</h4>
+<p class="body">Response time decreases as facilities increase, but at a diminishing rate. More facilities → faster response → but each additional facility adds less improvement.</p>
+<h4>Key Principle</h4>
+<div class="highlight">More facilities near customer → Less distance → More # DCs required → Even inbound also loses economies of scale → Total cost goes up after a point.</div>
+<div class="exam-tip">Always draw this diagram. Three separate curves (inventory ↑, transportation ↓, total U-shape) and then a separate service vs. facilities graph.</div>
+</div></div></div>
+</div><!-- end network -->
+
+<!-- ===== TRANSPORTATION ===== -->
+<div id="transport" class="section">
+<div class="section-header">
+  <div class="section-icon" style="background:rgba(80,227,164,.1)">🚚</div>
+  <div><h2>Transportation in a Supply Chain</h2><p>Modes · TP Network Design · Tailored TP · Risk Management · IT in TP</p></div>
+</div>
+
+<div class="q-card open">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q1</span><span class="q-title">What is Transportation in a SC? What are the factors affecting Transportation decisions?</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Transportation is an important SC driver that refers to the movement of products and goods from one place of production to a place of consumption. It aims to reduce overall cost while increasing transportation service. It also plays a significant component in total GDP. (Your notes Image 6)</div>
+<h4>Two Factors Affecting TP Decision</h4>
+<ol>
+<li><strong>Carrier (Party that moves the product):</strong>
+<ul>
+<li>Vehicle related cost</li>
+<li>Fixed operating cost</li>
+<li>Trip related cost</li>
+</ul>
+</li>
+<li><strong>Shipper (Party that requires movement of product between 2 points in the SC):</strong>
+<ul>
+<li>Transportation cost</li>
+<li>Inventory cost</li>
+<li>Facility cost</li>
+</ul>
+</li>
+</ol>
+<p class="body">Among the Carrier and Shipper, 2 other parties also have significant impact on TP: ① The owner and operators of TP infrastructure such as roads, ports, airports, etc. ② The body that sets TP policies worldwide (government/regulatory bodies).</p>
+<h4>Modes of Transportation</h4>
+<ul>
+<li>① Truck (TL and LTL)</li>
+<li>② Rail</li>
+<li>③ Air</li>
+<li>④ Package Carrier</li>
+<li>⑤ Water (International trades)</li>
+<li>⑥ Pipeline (Liquid and gases)</li>
+<li>⑦ Intermodal</li>
+</ul>
+<div class="exam-tip">Always mention both Carrier and Shipper perspectives. Then list modes — the exam may ask you to compare any two.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q2</span><span class="q-title">Explain modes of transportation: Truck, Rail, Air, Water, Pipeline — with Advantages and Disadvantages.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Each mode of transportation has distinct performance characteristics that make it suitable for different product types, distances, and SC requirements. (Your notes Images 6 and 7)</div>
+
+<h4>① Truck (Road Transport)</h4>
+<p class="body">Two sub-types: TL (Truck Load — single customer, homogeneous product) and LTL (Less Than Truck Load — small freight, multiple customers).</p>
+<div class="tbl-wrap"><table><thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead><tbody>
+<tr><td>Relatively low cost</td><td>Long distance over land can take more time</td></tr>
+<tr><td>Extensive road network (GPS)</td><td>Traffic delays and breakdowns</td></tr>
+<tr><td>Schedule &amp; track easily</td><td>High toll charges in some countries</td></tr>
+<tr><td>Consignment can be secured at port</td><td>Risk of damaged goods</td></tr>
+<tr><td>Flexibility of sending with 2 methods (TL/LTL)</td><td>Off-road &amp; traffic regulations</td></tr>
+</tbody></table></div>
+<p class="body"><strong>LTL:</strong> TP for relatively small freight/small volume. Cost associated with that particular volume — the dis-advantage is it may lead to delay as the truck has to make 2-3 destinations to unload at various locations.</p>
+
+<h4>② Rail</h4>
+<div class="tbl-wrap"><table><thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead><tbody>
+<tr><td>Fuel efficient</td><td>Cost in maintenance</td></tr>
+<tr><td>Manpower efficient</td><td>Inconvenience (fixed routes)</td></tr>
+<tr><td>Land use efficiency</td><td>Inflexible</td></tr>
+<tr><td>Speed &amp; Safety</td><td>More expensive than road for short distances</td></tr>
+<tr><td></td><td>Mechanical failure → adds to cost and affects delivery schedules</td></tr>
+</tbody></table></div>
+
+<h4>③ Air</h4>
+<div class="tbl-wrap"><table><thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead><tbody>
+<tr><td>Speed (frequent)</td><td>High cost than other options (not for all types of goods)</td></tr>
+<tr><td>Less packaging required</td><td>Fuel/currency surcharges added in freight cost</td></tr>
+<tr><td>High level of security</td><td>Paying taxes at each airport</td></tr>
+<tr><td>Sensitive items</td><td>Subjected to delays/cancellations</td></tr>
+<tr><td>Wide range of goods</td><td>Further transportation also needed</td></tr>
+</tbody></table></div>
+
+<h4>④ Water (International Trades)</h4>
+<div class="tbl-wrap"><table><thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead><tbody>
+<tr><td>Ships carry large volumes at low cost</td><td>Lots of delay time — slow (compared to other modes)</td></tr>
+<tr><td>Shipping containers can also be used for further transport by road/rail</td><td>Limited to certain geographic areas (ports)</td></tr>
+<tr><td>Dominant in global trade (Automobile)</td><td>Routes &amp; schedules are usually inflexible</td></tr>
+<tr><td></td><td>Tracking of products is difficult</td></tr>
+<tr><td></td><td>Have to pay dues/taxes; freight rates subject to fuel &amp; currency surcharges</td></tr>
+</tbody></table></div>
+
+<h4>⑤ Pipeline (Liquid &amp; Gases)</h4>
+<div class="tbl-wrap"><table><thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead><tbody>
+<tr><td>Ideally suited to TP of liquids &amp; gases</td><td>Not flexible</td></tr>
+<tr><td>Pipes can be laid through difficult terrain &amp; underwater</td><td>Capacity cannot be changed</td></tr>
+<tr><td>Very low energy consumption</td><td>Difficult to make security arrangements</td></tr>
+<tr><td>Little maintenance required</td><td>Maintenance difficulty</td></tr>
+<tr><td>Safe/accident-free &amp; eco-friendly</td><td></td></tr>
+</tbody></table></div>
+
+<h4>Key Insight — Intermodal</h4>
+<p class="body">Air, motor, rail, these 3 modes cannot be considered as isolated from each other because it is not necessarily possible to be absolutely adjacent to a rail/air/stockyard. So there is always a need to combine 2 or 3 modes of TP (intermodal). Examples: piggyback, birdyback, fishyback.</p>
+<div class="exam-tip">For a 5-mark answer, pick 3 modes (e.g., Truck, Rail, Air) and compare using a table with 3 advantages + 3 disadvantages each. Mention TL vs. LTL for trucks.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q3</span><span class="q-title">What is Intermodal vs. Multimodal Transport? Explain Package Carriers.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">When goods need to travel long distances globally, a single mode of transport is rarely sufficient. Intermodal and Multimodal transportation combine multiple modes, but differ in contract structure. (Your notes Image 8)</div>
+<div class="tbl-wrap"><table><thead><tr><th>Dimension</th><th>Intermodal</th><th>Multimodal</th></tr></thead><tbody>
+<tr><td>Definition</td><td>Movement of cargo from origin to destination by several modes of TP, where each mode has a different TP provider/entity responsible, with each with its own independent contract</td><td>2+ modes of TP but under a single contract</td></tr>
+<tr><td>Contract</td><td>Multiple contracts (complex but efficient)</td><td>Single contract (may be slightly costly)</td></tr>
+<tr><td>Coordination</td><td>Shipper coordinates between modes</td><td>One provider manages all</td></tr>
+<tr><td>Example</td><td>Road + Rail with separate companies</td><td>FedEx managing road + air together</td></tr>
+</tbody></table></div>
+<h4>Combination Types (from notes Image 8)</h4>
+<ul>
+<li><strong>Piggyback:</strong> Rail + Trucks</li>
+<li><strong>Birdyback:</strong> Air + Trucks</li>
+<li><strong>Fishyback:</strong> Water + Trucks</li>
+<li>Isolated → no requirement of combination with other modes</li>
+</ul>
+<h4>Package Carriers</h4>
+<ul>
+<li>TP company that provides diff services like: package tracking, delivery, assembly of products.</li>
+<li>Helps shipper for small package delivery like letters or shipments weighing up to 150 pounds.</li>
+<li>Helps in providing time-sensitive, high-reliability delivery.</li>
+<li>PC uses air, truck &amp; rail for TP for small &amp; time-sensitive packages.</li>
+<li><strong>Examples:</strong> FedEx, UPS, DHL.</li>
+</ul>
+<div class="exam-tip">Distinguish Intermodal vs. Multimodal clearly using the contract structure. Then explain package carriers with FedEx/UPS examples.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q4</span><span class="q-title">Explain TP Network Design and its Design Options. What are the tradeoffs?</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">TP Network Design is an approach that enables companies to create models of their end-to-end chains to evaluate new strategies and identify breakthrough improvements. It is commonly referred to using networks for infrastructure flow — links from origin to destination. (Your notes Image 8)</div>
+<h4>Why TP Network is Important</h4>
+<ul>
+<li>Highly affects the overall performance of the SC.</li>
+<li>The decisions regarding routing and scheduling &amp; the TP network are taken by the TP network.</li>
+<li>It can help to achieve high level of responsiveness with low cost.</li>
+</ul>
+<h4>Design Options for TP Network</h4>
+<div class="tbl-wrap"><table><thead><tr><th>Design Option</th><th>Best For</th><th>Key Feature</th></tr></thead><tbody>
+<tr><td>Direct Shipping (single dest.)</td><td>High-value, low-volume</td><td>No intermediary, low coordination</td></tr>
+<tr><td>Direct Shipping + Milk Runs</td><td>Multiple nearby customers</td><td>One truck, multiple stops</td></tr>
+<tr><td>All via Central DC (with storage)</td><td>Centralized inventory management</td><td>Holds inventory at DC</td></tr>
+<tr><td>All via DC (Cross-docking)</td><td>High-volume, time-sensitive</td><td>No storage, only sorting</td></tr>
+<tr><td>Shipping via DC using Milk Runs</td><td>Dense delivery areas</td><td>DC + local milk runs</td></tr>
+<tr><td>Tailored Network</td><td>Mixed customer/product needs</td><td>Optimal mix of above</td></tr>
+</tbody></table></div>
+<h4>Key Tradeoffs in TP Decisions</h4>
+<ul>
+<li><strong>Transport cost vs. Inventory cost:</strong> Faster/more frequent shipments = lower inventory but higher TP cost.</li>
+<li><strong>Direct vs. Consolidation:</strong> Direct = faster but more expensive per unit. Consolidation = cheaper but slower.</li>
+<li><strong>Mode selection:</strong> Air = fast but very expensive. Ship = cheap but slow.</li>
+<li><strong>TL vs. LTL:</strong> TL = cheaper per unit but only when volume is sufficient.</li>
+</ul>
+<div class="exam-tip">TP Network Design and Distribution Network Design overlap — know that distribution network (Image 9) = TP network design options.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q5</span><span class="q-title">Explain Tailored Transportation — by Customer Density, Customer Size, and Product Demand &amp; Value.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Tailored transportation means using different TP strategies for different customer segments, geographies, or product types. The goal is to minimize cost while meeting each customer's service requirements. (Your notes Images 10 and 11)</div>
+<h4>Key Drivers for Tailored Transportation</h4>
+<ul>
+<li>① Density &amp; Distance</li>
+<li>② Customer Size</li>
+<li>③ Product Demand &amp; Value</li>
+<li>Other factors: Location &amp; distance, type of goods (value, volume, weight, km), shipment frequency &amp; urgency, customer expectations, TP mode.</li>
+</ul>
+
+<h4>① Tailored TP by Customer Density &amp; Distance (from notes Image 10)</h4>
+<div class="tbl-wrap"><table><thead><tr><th>Density</th><th>Short Distance</th><th>Medium Distance</th><th>Long Distance</th></tr></thead><tbody>
+<tr><td>High Density</td><td>Put-through Milk Runs</td><td>Cross-Dock with Milk Runs</td><td>Cross-Dock with Milk Runs</td></tr>
+<tr><td>Medium Density</td><td>Third-party Milk Run</td><td>LTL Carrier</td><td>LTL/Package Carrier</td></tr>
+<tr><td>Low Density</td><td>Third-party MR / LTL Carrier</td><td>LTL/Package Carrier</td><td>Package Carrier</td></tr>
+</tbody></table></div>
+
+<h4>② Tailored TP by Customer Size (from notes Image 11)</h4>
+<ul>
+<li>Firms must consider customer size (in terms of quantity purchased and location) while designing the TP network.</li>
+<li>There are 2 costs associated with shipper: TP cost (based on total route distance in milk runs) and delivery cost (based on # of deliveries).</li>
+<li>A firm has to charge high delivery cost for smaller customers and low delivery cost for high-volume customers.</li>
+<li>A tailored sequence is assigned according to size of customer so that large customers are visited very frequently, and according to size of customer, TL carrier, LTL carrier, milk runs are decided.</li>
+<li>Sizes: Large, Medium, Small → different TP modes assigned.</li>
+</ul>
+
+<h4>③ Tailored TP by Product Demand &amp; Value (from notes Image 11)</h4>
+<div class="tbl-wrap"><table><thead><tr><th>Product Type</th><th>High Value</th><th>Low Value</th></tr></thead><tbody>
+<tr><td>High Demand</td><td>Disaggregated cycling</td><td>(fill per class)</td></tr>
+<tr><td>Low Demand</td><td></td><td></td></tr>
+</tbody></table></div>
+<p class="body">Aggregation strategies based on volume/demand: aggregation strategy is used here with strategic decisions to reduce TP cost. Decision for fleet TP / using outsourcing can be taken with respect to product demand &amp; value and unit shipment sizes.</p>
+<div class="exam-tip">The density-distance table is directly from your notes (Image 10) — memorize it. It is a very high-probability exam question.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q6</span><span class="q-title">Explain Risk Management in Transportation. What are the 3 main risks and mitigation strategies?</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">Transportation is exposed to multiple risks that can disrupt supply chains significantly. Understanding and mitigating these risks is critical for resilient SC operations. (Your notes Image 12)</div>
+<h4>3 Main Risks in Transportation</h4>
+<ol>
+<li><strong>Risk that shipment is delayed</strong> — traffic, weather, customs, port congestion.</li>
+<li><strong>Risk of destruction</strong> — theft, accidents, natural disasters damaging goods in transit.</li>
+<li><strong>Risk of hazardous material</strong> — dangerous goods causing safety incidents or regulatory problems.</li>
+</ol>
+<h4>Risk Mitigation Strategies</h4>
+<ol>
+<li><strong>Decrease the probability of disruption:</strong>
+<ul>
+<li>Use reliable carriers with strong track records.</li>
+<li>Pre-qualify routes and schedule shipments to avoid high-risk windows.</li>
+</ul>
+</li>
+<li><strong>Alternate Routing:</strong>
+<ul>
+<li>Have backup routes and carriers pre-identified so switching is fast.</li>
+<li>E.g., if a port is congested, route via alternate port.</li>
+</ul>
+</li>
+<li><strong>In case of Hazardous Material:</strong>
+<ul>
+<li>Use of modified containers, low-risk TP models.</li>
+<li>Modification of physical and chemical properties can prove to be effective.</li>
+<li>Follow regulatory compliance (HAZMAT regulations).</li>
+</ul>
+</li>
+</ol>
+<h4>Making TP Decisions in Practice (from notes Image 12)</h4>
+<ol>
+<li>Align TP strategy with company strategy.</li>
+<li>Consider both inhouse and outsource TP.</li>
+<li>Design a TP network that can handle e-Commerce.</li>
+<li>Use Technology to improve transport performance.</li>
+<li>Design flexibility into the TP network.</li>
+</ol>
+<div class="exam-tip">3 risks + 3 mitigation strategies = clean 5-mark answer. Then add "Making TP Decisions in Practice" as a concluding point.</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">Q7</span><span class="q-title">What is the Role of IT in Transportation? Explain with key applications.</span><span class="q-marks">5 marks</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="ans-intro">The complexity of transportation decisions demands the use of IT systems. IT plays a critical enabling role in modern TP management, from route optimization to real-time tracking. (Your notes Image 11)</div>
+<h4>Role of IT in Transportation</h4>
+<ol>
+<li><strong>Complexity demands IT:</strong> TP decisions are complex (thousands of routes, vehicles, customers) — IT is necessary, not optional.</li>
+<li><strong>IT Software can assist in:</strong>
+<ul>
+<li>Identifying optimal routes by minimizing cost, subject to delivery constraints.</li>
+<li>Optimal fleet utilization — assign the right vehicle to the right shipment.</li>
+<li>GPS Applications — real-time tracking of vehicles and shipments.</li>
+</ul>
+</li>
+</ol>
+<h4>Specific IT Applications</h4>
+<div class="tbl-wrap"><table><thead><tr><th>IT Application</th><th>Role in Transportation</th></tr></thead><tbody>
+<tr><td>GPS / Telematics</td><td>Real-time vehicle tracking, route monitoring</td></tr>
+<tr><td>TMS (Transport Management System)</td><td>Route planning, carrier selection, load optimization</td></tr>
+<tr><td>EDI (Electronic Data Interchange)</td><td>Automated shipment notifications and documentation</td></tr>
+<tr><td>Blockchain</td><td>Tamper-proof shipment records, customs clearance</td></tr>
+<tr><td>AI / ML</td><td>Demand forecasting → optimal dispatch planning</td></tr>
+<tr><td>IoT Sensors</td><td>Temperature, humidity monitoring for sensitive goods</td></tr>
+</tbody></table></div>
+<h4>Network Design as an IT-Enabled Process (from notes)</h4>
+<ul>
+<li>In Excel / Solver: some data will be given, have to find minimum transportation cost by using Excel Solver to get the location of warehouse.</li>
+<li>Network design decisions are increasingly solved using optimization software (e.g., CPLEX, Gurobi).</li>
+</ul>
+<div class="exam-tip">Structure: why IT is needed → what IT can do (3 bullet points from notes) → table of specific technologies → conclude with network optimization software.</div>
+</div></div></div>
+</div><!-- end transport -->
+
+<!-- ===== QUICK REVISION ===== -->
+<div id="quick" class="section">
+<div class="section-header">
+  <div class="section-icon" style="background:rgba(255,107,107,.1)">⚡</div>
+  <div><h2>Quick Revision — All Topics</h2><p>Key terms, formulas, and one-liners for last-minute prep</p></div>
+</div>
+
+<div class="q-card open">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">★</span><span class="q-title">Sourcing — 10 Key One-Liners to Remember</span><span class="q-marks">Must know</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<ol>
+<li>Sourcing = all processes to purchase goods &amp; services from external parties.</li>
+<li>Primary reason for outsourcing = supplier achieves better economies of scale than the firm.</li>
+<li>3 situations NOT to outsource: high volume, highly variable requirements, specific resources needed.</li>
+<li>TCO = Total Cost of Ownership (price + transport + inventory + quality defect + risk costs).</li>
+<li>Revenue Sharing: lower wholesale price but supplier gets share of retailer revenue.</li>
+<li>Buyback: supplier buys back unsold inventory → retailer orders more.</li>
+<li>Quantity Flexibility: retailer can change order quantity after seeing demand.</li>
+<li>Design Collaboration: buyer &amp; supplier work together at design phase → reduces time to market &amp; cost.</li>
+<li>IP Risk is the biggest challenge in design collaboration.</li>
+<li>Offshoring = WHERE (another country); Outsourcing = WHO (external party).</li>
+</ol>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">★</span><span class="q-title">Network Design — 10 Key One-Liners to Remember</span><span class="q-marks">Must know</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<ol>
+<li>7 NDD factors: S-T-M-P-I-C-L (Strategic, Technological, Macro, Political, Infra, Competitive, Logistics).</li>
+<li>Cost-Response Time Frontier: faster response = higher cost (local FG = most expensive, raw material at supplier = cheapest).</li>
+<li>Service vs. Facilities: Response time decreases with more facilities but at diminishing rate.</li>
+<li>Cost vs. Facilities: Total cost is U-shaped — optimal number of facilities exists.</li>
+<li>Gravity Model formula: x* = Σ(xn × Dn) / ΣDn ; y* = Σ(yn × Dn) / ΣDn</li>
+<li>4-Phase Global Location Framework: SC Strategy → Regional Config → Desirable Sites → Location Choices.</li>
+<li>Cross-docking: Only repackaging, NO inventory storage at DC.</li>
+<li>Milk Runs: Same truck, different products, different destinations.</li>
+<li>Demonetization (2016) is the classic example for macroeconomic risk in NDD.</li>
+<li>Uncertainty in network: SC design investments can't be changed in short term → build flexibility.</li>
+</ol>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">★</span><span class="q-title">Transportation — 10 Key One-Liners to Remember</span><span class="q-marks">Must know</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<ol>
+<li>Two main TP decision parties: Carrier (moves product) and Shipper (requires movement).</li>
+<li>7 Modes: Truck, Rail, Air, Package Carrier, Water, Pipeline, Intermodal.</li>
+<li>TL = Truck Load (homogeneous, single customer); LTL = Less Than Truck Load (small freight, multiple).</li>
+<li>Rail advantages: fuel efficient, speed, safety. Disadvantages: inflexible, mechanical failure.</li>
+<li>Air: fastest, most expensive, best for time-sensitive and sensitive items.</li>
+<li>Water/Ship: cheapest per unit, highest volume, slowest, dominant in global trade (automobiles).</li>
+<li>Pipeline: for liquids &amp; gases only; very low energy consumption; eco-friendly; inflexible.</li>
+<li>Intermodal = multiple modes, MULTIPLE contracts. Multimodal = multiple modes, SINGLE contract.</li>
+<li>Piggyback = Rail + Truck; Birdyback = Air + Truck; Fishyback = Water + Truck.</li>
+<li>3 TP Risks: Delayed shipment, Destruction, Hazardous material. 3 mitigations: Reduce probability, Alternate routing, Modified containers.</li>
+</ol>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">★</span><span class="q-title">Key Formulas &amp; Models Summary</span><span class="q-marks">Numericals</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<div class="num-box">
+<div class="num-box-title">Gravity / Centroid Model</div>
+<div class="formula">x* = Σ(xn × Dn) / ΣDn
+y* = Σ(yn × Dn) / ΣDn
+
+Where: xn, yn = coordinates of location n
+       Dn = demand/tonnage at location n
+       (x*, y*) = optimal warehouse location</div>
+</div>
+<div class="num-box">
+<div class="num-box-title">Network Optimization Objective</div>
+<div class="formula">Minimize: Σ dn × Dn × Tn
+
+Where: dn = distance warehouse to location n
+       Dn = annual tonnage to location n
+       Tn = transportation cost per ton-mile</div>
+</div>
+<div class="num-box">
+<div class="num-box-title">Safety Stock (for NDD — more facilities)</div>
+<div class="formula">Safety Stock ∝ √(Number of Facilities)
+[Square Root Law: doubling facilities → √2 times more safety stock system-wide]</div>
+</div>
+<div class="num-box">
+<div class="num-box-title">Tailored TP — Density × Distance Matrix</div>
+<div class="formula">              Short Dist    Medium Dist    Long Dist
+High Density  Put-through   Cross-Dock +   Cross-Dock +
+              Milk Runs     Milk Runs      Milk Runs
+Med Density   3rd-party MR  LTL Carrier    LTL/Pkg Carrier
+Low Density   3rd-party MR/ LTL/Pkg        Package
+              LTL Carrier   Carrier        Carrier</div>
+</div>
+</div></div></div>
+
+<div class="q-card">
+<div class="q-header" onclick="toggleCard(this)"><span class="q-num">★</span><span class="q-title">Possible 5-Mark Questions to Expect in Exam</span><span class="q-marks">Prediction</span><span class="q-toggle">▼</span></div>
+<div class="q-body"><div class="ans-block">
+<h4>High Probability Questions</h4>
+<ul>
+<li>Explain factors influencing Network Design Decisions (with examples) — very likely.</li>
+<li>Compare any two modes of transportation (Advantages &amp; Disadvantages).</li>
+<li>What is Tailored Transportation? Explain with density-distance matrix.</li>
+<li>Explain sourcing contracts: Revenue Sharing, Buyback, Quantity Flexibility.</li>
+<li>What is the Cost-Response Time Frontier? Draw and explain.</li>
+<li>Explain Cross-docking and Milk Runs — differences and use cases.</li>
+<li>Gravity Model for Facility Location — numerical problem.</li>
+<li>What is the role of sourcing in supply chain? When does outsourcing NOT work?</li>
+<li>Explain the 4-Phase Framework for Global Site Location.</li>
+<li>Risk Management in Transportation — 3 risks and 3 mitigation strategies.</li>
+</ul>
+<h4>Medium Probability</h4>
+<ul>
+<li>Offshoring vs. Outsourcing with 2×2 matrix.</li>
+<li>Design Collaboration — benefits and challenges.</li>
+<li>Intermodal vs. Multimodal transportation.</li>
+<li>IT role in transportation.</li>
+<li>Impact of uncertainty on SC network design.</li>
+</ul>
+<div class="exam-tip">For each 5-mark answer: intro (1 line) → define concept (1 line) → main body (3-4 points with examples) → conclusion or diagram → you'll nail it.</div>
+</div></div></div>
+</div><!-- end quick -->
+
+</div><!-- container -->
+
+<script>
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggleCard(header) {
+  const card = header.parentElement;
+  card.classList.toggle('open');
+}
+// Open first card of active section on tab switch
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    setTimeout(() => {
+      const active = document.querySelector('.section.active');
+      const first = active ? active.querySelector('.q-card') : null;
+      if (first && !first.classList.contains('open')) first.classList.add('open');
+    }, 100);
+  });
+});
+</script>
+</body>
+</html>
